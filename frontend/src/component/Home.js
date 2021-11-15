@@ -12,28 +12,6 @@ export default function Home() {
     setbookAree(result.data);
   }, []);
 
-  // const useAudio = url => {
-  //   const [audio] = useState(new Audio(url));
-  //   const [playing, setPlaying] = useState(false);
-
-  //   const toggle = () => setPlaying(!playing);
-
-  //   useEffect(() => {
-  //       playing ? audio.play() : audio.pause();
-  //     },
-  //     [playing]
-  //   );
-
-  //   useEffect(() => {
-  //     audio.addEventListener('ended', () => setPlaying(false));
-  //     return () => {
-  //       audio.removeEventListener('ended', () => setPlaying(false));
-  //     };
-  //   }, []);
-
-  //   return [playing, toggle];
-  // };
-
   const s1 = new Audio(sound);
   const s2 = new Audio(sound1);
   const s3 = new Audio(sound2);
@@ -46,20 +24,10 @@ export default function Home() {
       s3.play();
     }
   };
-  const Player = ({ url }) => {
-    const [playing, toggle] = useAudio(url);
 
-    return (
-      <div>
-        <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
-      </div>
-    );
-  };
 
-  // const prod =new Audio
-  // const start = () => {
-  //   prod.play();
-  // };
+
+
   const likedstyle = {
     fontSize: 40,
     color: "red",
@@ -80,8 +48,8 @@ export default function Home() {
     // axios.patch("/bookAree/"+id).then()
   };
 
-  return (
-    <div className="books">
+
+    return <div className="books">
       {bookAree.map((ele, i) => {
         return (
           <div>
@@ -95,10 +63,7 @@ export default function Home() {
               play 1
             </button>
 
-            {/* <button onClick={()=>{play1()}}>play 1</button>
-      <button onClick={()=>{play2()}}>play 2</button>
-      <button onClick={()=>{play3()}}>play 3</button> */}
-
+           
             <i
               style={ele.liked ? likedstyle : likedstyle2}
               
@@ -110,5 +75,4 @@ export default function Home() {
         );
       })}
     </div>
-  );
 }
