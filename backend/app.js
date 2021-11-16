@@ -69,3 +69,11 @@ const port = 5000;
 app.listen(port, () => {
   console.log("server is running");
 });
+app.get("/serch/:name", (req, res) => {
+  const searchBodkast= req.params.name;
+  let newSearch= bookAree.filter((element, index) => {
+    return element.name ==searchBodkast ;
+  });
+  res.status(200);
+  res.json(newSearch) 
+})
