@@ -7,10 +7,42 @@ import "bootstrap/dist/css/bootstrap.css";
 
 export default function Home() {
   const [bookAree, setbookAree] = useState([]);
+  const [newSearch,setNewSearch] = useState("");
   useEffect(async () => {
     const result = await axios.get("http://localhost:5000/bookAree");
     setbookAree(result.data);
   }, []);
+const searchBodkast = (e) =>{
+  setNewSearch(e.target.value)
+};
+ const searchd=async()=>{
+   console.log(newSearch);
+   const res = await axios.get(`http://localhost:5000//serch/:name/${newSearch}`);
+   setbookAree(res.data);
+ }
+
+
+  const useAudio = url => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => setPlaying(!playing);
+
+    useEffect(() => {
+        playing ? audio.play() : audio.pause();
+      },
+      [playing]
+    );
+
+    useEffect(() => {
+      audio.addEventListener('ended', () => setPlaying(false));
+      return () => {
+        audio.removeEventListener('ended', () => setPlaying(false));
+      };
+    }, []);
+
+    return [playing, toggle];
+  };
 
   const s1 = new Audio(sound);
   const s2 = new Audio(sound1);
@@ -24,10 +56,20 @@ export default function Home() {
       s3.play();
     }
   };
+  const Player = ({ url }) => {
+    const [playing, toggle] = useAudio(url);
 
+    return (
+      <div>
+        <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
+      </div>
+    );
+  };
 
-
-
+  // const prod =new Audio
+  // const start = () => {
+  //   prod.play();
+  // };
   const likedstyle = {
     fontSize: 40,
     color: "red",
@@ -47,14 +89,28 @@ export default function Home() {
     setbookAree(newSatet);
     // axios.patch("/bookAree/"+id).then()
   };
+  
 
 
-    return <div className="books">
+  return (
+    <>
+      <input onChange={(e) =>{ searchBodkast(e)}}
+              
+            
+           
+            />
+            
+            <button onClick={()=>{searchd()}}>search</button>
+    
+    <div className="books">
       {bookAree.map((ele, i) => {
         return (
           <div>
             {ele.name}
             <img className="imgSize" src={ele.img} />
+           
+          
+           
             <button
               onClick={() => {
                 play(i);
@@ -62,8 +118,11 @@ export default function Home() {
             >
               play 1
             </button>
+            
+            {/* <button onClick={()=>{play1()}}>play 1</button>
+      <button onClick={()=>{play2()}}>play 2</button>
+      <button onClick={()=>{play3()}}>play 3</button> */}
 
-           
             <i
               style={ele.liked ? likedstyle : likedstyle2}
               
@@ -73,6 +132,7 @@ export default function Home() {
             </i>
           </div>
         );
-      })}
+      })}{""}
     </div>
+  </>);
 }
