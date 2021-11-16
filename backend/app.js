@@ -65,10 +65,6 @@ app.patch("/bookeAreee/:id", (req, res)=>{
   let id  = req.paramas.id;
   
 })
-const port = 5000;
-app.listen(port, () => {
-  console.log("server is running");
-});
 app.get("/serch/:name", (req, res) => {
   const searchBodkast= req.params.name;
   let newSearch= bookAree.filter((element, index) => {
@@ -77,3 +73,21 @@ app.get("/serch/:name", (req, res) => {
   res.status(200);
   res.json(newSearch) 
 })
+
+
+
+app.patch("/bookeAree/:id", (req, res) => {
+  let id = req.params.id;
+
+  const newSatet = bookAree;
+
+  let index = newSatet.findIndex((obj) => obj.id == id);
+
+  newSatet[index].liked = !newSatet[index].liked;
+  return { status: "success" };
+});
+
+const port = 5000;
+app.listen(port, () => {
+  console.log("server is running");
+});
