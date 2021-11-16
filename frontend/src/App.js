@@ -1,20 +1,24 @@
 import React from 'react'
 import Home from './component/Home.js';
-import Navbar from './component/Navbar';
 // import Footer from './Components/Footer/Footer';
-import { Routes,Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import Login from './component/Login';
+import Hedar from './component/Hedar';
+// import "bootstrap/dist/css/bootstrap.main.css"
+
 export default function App() {
   return (
     <div>
-      <Navbar />
-      <div >
-        <Routes>
-          <Route path="/Home" element={<Home />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
-          <Route path="/Navbar" element={<Navbar />}></Route>
-        </Routes>
-      </div>
+{/* <h1>بودكاست </h1> */}
+      {/* <Home/>
+      <Login/> */}
+      {/* <Navbar /> */}
+   
+         <Route  path="/" component={Hedar }Route/>
+          <Route path="/Home" component={Home }Route/>
+          <Route path="/Login" component={Login }Route/>
+     
+ 
     </div>
   )
 }
