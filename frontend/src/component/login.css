@@ -1,6 +1,4 @@
-/* body{
-    background-image:"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.muhtwa.com%2Fwp-content%2Fuploads%2F%25D8%25AE%25D9%2584%25D9%2581%25D9%258A%25D8%25A7%25D8%25AA-%25D9%2584%25D9%2584%25D8%25AA%25D8%25B5%25D9%2585%25D9%258A%25D9%2585131.jpg.webp&imgrefurl=https%3A%2F%2Fwww.muhtwa.com%2F246766%2F%25D8%25AE%25D9%2584%25D9%2581%25D9%258A%25D8%25A7%25D8%25AA-%25D9%2584%25D9%2584%25D8%25AA%25D8%25B5%25D9%2585%25D9%258A%25D9%2585%2F&tbnid=-xxyveANR0sv5M&vet=12ahUKEwi4p-apypX0AhUI4aQKHVguBsYQMygpegUIARCEAg..i&docid=F-lecJ_8HQPKZM&w=640&h=399&q=%D8%AE%D9%84%D9%81%D9%8A%D8%A7%D8%AA%20%D9%81%D8%AE%D9%85%D8%A9%20%D9%84%D9%84%D8%AA%D8%B5%D9%85%D9%8A%D9%85&ved=2ahUKEwi4p-apypX0AhUI4aQKHVguBsYQMygpegUIARCEAg";
-} */
+
 .logIn{
     margin: 300px;
     background-color: aqua;
@@ -9,14 +7,14 @@
     font-size: larger;
 }
 .inpLog1{
-   height: 20px;
-   width: 20%;
+   height: 50px;
+   width: 50%;
    font-style: italic;
    font-size: 20px;
 }
 .inpLog2{
-    height: 20px;
-    width:20%;
+    height: 50px;
+    width:50%;
     font-style: italic;
     font-size: 20px;
 }
