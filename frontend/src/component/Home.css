@@ -1,3 +1,7 @@
+body{
+    background-image: url("ttt.png") ;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -38,8 +42,11 @@
     color: black;
 }
 .inp{
-    width: 10%;
-    height: 30px;}
+    width: 40%;
+    height: 30px;
+    margin-left: 450px;
+    
+}
     h1{
         text-align: center;
         font-style: italic;

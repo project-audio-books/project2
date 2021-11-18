@@ -51,22 +51,23 @@ bookAree=[
   },
  
 ]
+
 app.get("/bookAree", (req, res) => {
   res.status(200);
   res.json(bookAree);
-});
-app.patch("/bookeAreee/:id", (req, res)=>{
-  let id  = req.paramas.id;
+}); 
+// app.patch("/bookeAreee/:id", (req, res)=>{
+//   let id  = req.paramas.id;
   
-})
-app.get("/serch/:name", (req, res) => {
-  const searchBodkast= req.params.name;
-  let newSearch= bookAree.filter((element, index) => {
-    return element.name ==searchBodkast ;
-  });
-  res.status(200);
-  res.json(newSearch) 
-})
+// })
+// app.get("/serch/:name", (req, res) => {
+//   const searchBodkast= req.params.name;
+//   let newSearch= bookAree.filter((element, index) => {
+//     return element.name ==searchBodkast ;
+//   });
+//   res.status(200);
+//   res.json(newSearch) 
+// })
 
 app.get("/serch/:name", (req, res) => {
   const searchBodkast= req.params.name;
@@ -88,6 +89,28 @@ app.patch("/bookeAree/:id", (req, res) => {
   newSatet[index].liked = !newSatet[index].liked;
   return { status: "success" };
 });
+ 
+const userNew=[
+  { UserName: "huda", PassWord: "1234" },
+  { UserName: "maryam", PassWord: "56789" },
+  { UserName: "amirah", PassWord: "13579" },
+  ];
+
+  app.post("/login", (req, res) => {
+    let user = req.body.user;
+    let pass = req.body.pass;
+    for (let i = 0; i < userNew.length; i++) {
+      if (userNew[i].user === user && userNew[i].pass === pass) {
+        res.send("login correct");
+      }
+    }
+    res.status(200);
+     res.json("login failed");
+  });
+  
+  
+
+ 
 
 const port = 5000;
 app.listen(port, () => {
