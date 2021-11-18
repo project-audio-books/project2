@@ -1,58 +1,66 @@
-import React ,{useState} from 'react';
-import {useHistory} from 'react-router-dom';
-import "./login.css";
-export default function Login() {
-    const [email, setemail] = useState(null)
-    const [password, setpassword] = useState(null)
-    const [alluser, setalluser] = useState([])
 
-    const submitForm =(e)=>{e.preventDefault()
-const Newuser= {email:email, password:password}
-
-setalluser ([...alluser,Newuser])}
-console.log(alluser);
-
-
-    return (
-        <div className="logIn">
-             
- <div>
-    <form onsubmit={submitForm}>
-
-        <span> LOG IN </span>
-            <div className =" emilLog"> 
-                   <input onChange={(e)=>setemail(e.target.value)} 
-                    className="inpLog1"
-                   type="text" 
-                   placeholder="enter your email "
-                   />
-            </div>
-
-
-            <div className =" passLog"> 
-                   <input onChange={(e)=>setpassword(e.target.value)} 
-                    className="inpLog2"
-                   type="password" 
-                   placeholder="enter your password"
-                   />
-
-
-            </div>
-            {/* <label> Remember me </label> */}
-
-           <button  onClick={onsubmit}> LOGN </button>
-
-                </form> 
-
-
-            </div> {alluser.map((curElem)=>{
-
-             <div>
-                   <p>{curElem.email}</p>
-                   <p>{curElem.password}</p>
-            </div>
-                })
-            }
-             </div>
-    )
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+export default function NavBar() {
+  const [Users, setUsers] = useState([]);
+  const [input, setPassword] = useState("");
+  const [NewUsers, setNewUsers] = useState("");
+  const history = useHistory();
+  const interuser = (e) => {
+    setNewUsers(e.target.value);
+  };
+  const interbass = (e) => {
+    setPassword(e.target.value);
+  };
+  const singIn = async () => {
+    const res = await axios.post("http://localhost:5000/login", {
+      username: NewUsers,
+      password: input,
+    });
+    if (res.data === "login correct") {
+      history.push("/Home");
+    }
+    setUsers(res.data);
+    console.log(res.data);
+  };
+  return (
+    <div>
+     
+      <div className="btn">
+        <input
+          onChange={(e) => {
+            interuser(e);
+          }}
+          type="text"
+          placeholder="UserName"
+        />
+        <br />
+        <br />
+        <input
+          onChange={(e) => {
+            interbass(e);
+          }}
+          type="text"
+          placeholder="Password"
+        />
+        <br />
+        <br />
+        <button
+          onClick={(e) => {
+            singIn();
+          }}
+        >
+          sign in
+        </button>{" "}
+      </div>
+      <h1>{Users}</h1>
+    </div>
+  );
 }
+
+
+
+
+
+

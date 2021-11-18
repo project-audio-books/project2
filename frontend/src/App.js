@@ -16,7 +16,7 @@ export default function App() {
    
          <Route  path="/" component={Hedar }Route/>
           <Route path="/Home" component={Home }Route/>
-          <Route path="/Login" component={Login }Route/>
+          <Route exact path="/Login" component={Login }Route/>
      
  
     </div>
